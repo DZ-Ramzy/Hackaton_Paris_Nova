@@ -3,7 +3,11 @@
     "allow": [
       "Bash(npm run *)",
       "Bash(npm install *)",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(netstat -ano)",
+      "Bash(taskkill //PID 21468 //F)",
+      "Bash(taskkill //PID 25724 //F)",
+      "Bash(taskkill *)"
     ]
   }
 }
