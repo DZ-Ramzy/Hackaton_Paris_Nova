@@ -1,9 +1,10 @@
-# AutoSwitch — Dossier marché & recherche
+# AutoSwitch — Dossier marché & recherche (électricité)
 
 **Dernière mise à jour : 2026-04-25**
-**Sources : CRE, ARCEP, Enedis, Médiateur National de l'Énergie, Selectra, Hello Watt, Kelwatt, Crunchbase, ARCEP, Ofgem (UK), TechCrunch, Service-Public.fr.**
+**Périmètre : électricité résidentielle France uniquement.**
+**Sources : CRE, Enedis, Médiateur National de l'Énergie, Selectra, Hello Watt, Kelwatt, Crunchbase, Ofgem (UK), TechCrunch, Service-Public.fr.**
 
-> Toutes les sources sont citées inline en bas de chaque section. Toute donnée non sourcée est explicitement marquée *(estimation)*.
+> Toutes les sources sont citées inline. Toute donnée non sourcée est explicitement marquée *(estimation)*.
 
 ---
 
@@ -14,18 +15,18 @@
 | 1 | Sites résidentiels électricité en France | **35 M+** | [CRE Q4 2025](https://www.cre.fr/fileadmin/Documents/Rapports_et_etudes/2026/Observatoire_T4_2025.pdf) |
 | 2 | Foyers déjà sortis du TRV | **44 % (15,5 M)** | [CRE Q4 2025](https://www.cre.fr/fileadmin/Documents/Rapports_et_etudes/2026/Observatoire_T4_2025.pdf) |
 | 3 | Croissance fournisseurs alternatifs 2025 | **+556 000 clients (+9 %)** | [CRE Q4 2025](https://www.cre.fr/fileadmin/Documents/Rapports_et_etudes/2026/Observatoire_T4_2025.pdf) |
-| 4 | Compteurs Linky installés | **37,6 M (97 %)** | [Libow / Enedis](https://www.libow.fr/linky-obligatoire-2025/) |
-| 5 | Écart top offre vs TRV (Primeo Confort+) | **-20 %** | [Kelwatt Primeo](https://www.kelwatt.fr/fournisseurs/primeo/prix) |
-| 6 | Économie annuelle réaliste foyer 6 kVA / 5 000 kWh | **150–320 €/an** | Calcul Hello Watt |
-| 7 | Volatilité spot avril 2026 (7 jours) | **37 → 235 €/MWh (×6,4)** | [Kelwatt spot](https://www.kelwatt.fr/prix/electricite-spot-cours-marche-gros) |
-| 8 | Abonnés mobiles France | **84 M SIM** | [ARCEP T2 2025](https://www.arcep.fr/cartes-et-donnees/nos-publications-chiffrees/observatoire-des-marches-des-communications-electroniques-en-france/t2-2025.html) |
-| 9 | ARPU mobile moyen | **14,50 € HT/mois** | [ARCEP T2 2025](https://www.arcep.fr/cartes-et-donnees/nos-publications-chiffrees/observatoire-des-marches-des-communications-electroniques-en-france/t2-2025.html) |
-| 10 | Forfaits mobile sans engagement | **89,4 %** | [ARCEP T4 2025](https://www.arcep.fr/cartes-et-donnees/nos-publications-chiffrees/observatoire-des-marches-des-communications-electroniques-en-france/t4-2025.html) |
-| 11 | Économie possible mobile (premium → MVNO) | **200–300 €/an** | [Le Blog Finance](https://leblogfinance.com/2026/04/factures-de-telephone-ces-forfaits-surdimensionnes-qui-gaspillent-600euro-par-an.html) |
-| 12 | Saisines Médiateur Énergie 2024 | **11 678 (-19 %)** | [MNE Rapport 2024](https://www.energie-mediateur.fr/rapport-annuel-2024-du-mediateur-national-de-lenergie-malgre-la-baisse-du-nombre-de-saisines-les-pratiques-inacceptables-persistent/) |
-| 13 | Octopus Energy UK : valuation | **9 Md $** | [Octopus FY24 results](https://octopus.energy/press/octopus-energy-group-results-for-fy24-delivered-0-7-profit-margin-tripled-non-uk-customer-base-and-increased-net-assets-to-1-7bn/) |
-| 14 | Sanction démarchage téléphonique | **75 k€ / 375 k€** | [Service Public](https://www.service-public.gouv.fr/particuliers/actualites/A18384) |
-| 15 | Commission moyenne comparateur en France | **20–60 €/client acquis** | Selectra modèle |
+| 4 | Compteurs Linky installés | **37,6 M (97 %)** | [Libow](https://www.libow.fr/linky-obligatoire-2025/) |
+| 5 | Offres marché < TRV | **47 sur 80 (59 %)** | [CRE Q4 2024](https://www.cre.fr/fileadmin/Documents/Rapports_et_etudes/2025/Observatoire_T4_2024.pdf) |
+| 6 | Écart top offre vs TRV (Primeo Confort+) | **-16,2 %** | [Kelwatt Primeo](https://www.kelwatt.fr/fournisseurs/primeo/prix) |
+| 7 | Économie annuelle réaliste foyer 6 kVA / 5 000 kWh | **150–320 €/an** | Calcul Hello Watt |
+| 8 | Volatilité spot avril 2026 (7 jours) | **37 → 235 €/MWh (×6,4)** | [Kelwatt spot](https://www.kelwatt.fr/prix/electricite-spot-cours-marche-gros) |
+| 9 | Foyers en option HP/HC | **~30 %** des foyers | [Hello Watt HP/HC](https://www.hellowatt.fr/contrat-electricite/heures-pleines-heures-creuses) |
+| 10 | Saisines Médiateur Énergie 2024 | **11 678 (-19 %)** | [MNE Rapport 2024](https://www.energie-mediateur.fr/rapport-annuel-2024-du-mediateur-national-de-lenergie-malgre-la-baisse-du-nombre-de-saisines-les-pratiques-inacceptables-persistent/) |
+| 11 | Octopus Energy UK : valuation | **9 Md $** | [Octopus FY24](https://octopus.energy/press/octopus-energy-group-results-for-fy24-delivered-0-7-profit-margin-tripled-non-uk-customer-base-and-increased-net-assets-to-1-7bn/) |
+| 12 | Sanction démarchage téléphonique | **75 k€ / 375 k€** | [Service Public](https://www.service-public.gouv.fr/particuliers/actualites/A18384) |
+| 13 | Commission moyenne comparateur français | **20–60 €/client acquis** | Selectra |
+| 14 | Nb fournisseurs nationaux + ELD | **29 + 16 = 45** | [Expertise Énergie](https://www.expertise-energie.fr/les-fournisseurs-denergie/) |
+| 15 | Français prêts à déléguer leur switch | **41 %** | IFOP 2024 |
 
 ---
 
@@ -40,7 +41,7 @@
 | Fournisseurs alternatifs | 11,2 M | **31,8 %** | **+556 k clients** |
 | **Total** | **35,35 M** | 100 % | +500 k/an |
 
-Source : [CRE — Observatoire des marchés de détail T4 2025](https://www.cre.fr/fileadmin/Documents/Rapports_et_etudes/2026/Observatoire_T4_2025.pdf), [CRE actualité](https://www.cre.fr/actualites/toute-lactualite/la-cre-publie-son-observatoire-des-marches-de-detail-de-lenergie-du-quatrieme-trimestre-2025-et-dresse-le-bilan-annuel-de-la-concurrence-sur-ces-marches).
+Source : [CRE — Observatoire des marchés de détail T4 2025](https://www.cre.fr/fileadmin/Documents/Rapports_et_etudes/2026/Observatoire_T4_2025.pdf).
 
 ### 1.2 Top fournisseurs (clients résidentiels)
 
@@ -75,7 +76,7 @@ Source : [Selectra — Parts de marché fournisseurs](https://selectra.info/ener
 
 Source : [EDF — Tarif Bleu Avril 2026](https://particulier.edf.fr/fr/accueil/guide-energie/electricite/prix-electricite-fournisseurs.html).
 
-### 2.2 Historique TRV 2021–2026
+### 2.2 Historique TRV 2021-2026
 
 | Date | Évolution | Contexte | Source |
 |---|---:|---|---|
@@ -111,9 +112,38 @@ Sources : [Kelwatt — Primeo](https://www.kelwatt.fr/fournisseurs/primeo/prix),
 
 ---
 
-## 3. Économie réelle pour le foyer
+## 3. Options tarifaires & optimisation au-delà du switch
 
-### 3.1 Foyer type — 6 kVA, 5 000 kWh/an, option Base
+### 3.1 Les 4 options tarifaires majeures
+
+| Option | Principe | Cible idéale | Économie vs Base | Source |
+|---|---|---|---:|---|
+| **Base** | Prix kWh constant 24/7 | Profil flat, télétravail | référence | [Selectra Base/HC](https://selectra.info/energie/guides/conso/heures-creuses-pleines) |
+| **Heures Pleines / Heures Creuses (HP/HC)** | kWh 30 % moins cher 8h/jour la nuit | Chauffe-eau, chauffage élec, EV | **80–200 €/an** | [Hello Watt HP/HC](https://www.hellowatt.fr/contrat-electricite/heures-pleines-heures-creuses) |
+| **Tempo (EDF)** | 6 couleurs jour : 22 bleu très chers (rouge) vs 300 bleus très bas | Profil flexible (effacement) | **200–400 €/an** | [Selectra Tempo](https://selectra.info/energie/guides/conso/tempo) |
+| **Effacement Jour de Pointe (EJP)** | Anciennement EDF, rare en 2026 | — | Variable | EDF |
+
+### 3.2 Combien de Français sont déjà en HP/HC ?
+
+- **~30 %** des foyers ont une option HP/HC
+- Mais **~50 %** auraient un gain à passer en HP/HC vu leur profil (ballon eau chaude programmable, chauffage élec)
+- Source : [Hello Watt — Heures creuses](https://www.hellowatt.fr/contrat-electricite/heures-pleines-heures-creuses).
+
+> **Insight produit AutoSwitch** : on peut détecter sur 2-4 semaines de courbe Linky 30 min si le client gagnerait à basculer HP/HC ou Tempo. C'est une couche d'optimisation **invisible aux comparateurs traditionnels** qui ne voient que la facture annuelle.
+
+### 3.3 Sur/sous-puissance souscrite
+
+- Foyer souscrit 9 kVA mais pic réel à 5 kVA = surpaye **47 €/an d'abonnement**
+- Foyer souscrit 6 kVA avec disjonctions fréquentes = besoin 9 kVA
+- Source : [EDF — Choisir sa puissance](https://particulier.edf.fr/fr/accueil/electricite/choisir-puissance-compteur.html)
+
+L'agent peut analyser la **puissance maximale appelée** sur 3 mois Linky et recommander la puissance optimale.
+
+---
+
+## 4. Économie réelle pour le foyer
+
+### 4.1 Foyer type — 6 kVA, 5 000 kWh/an, option Base
 
 **Facture TRV de référence** : 187,80 € (abo) + 5 000 × 0,1940 = **1 157,80 €/an**.
 
@@ -123,9 +153,9 @@ Sources : [Kelwatt — Primeo](https://www.kelwatt.fr/fournisseurs/primeo/prix),
 | Médian | Top 10 (-7 %) | 1 077 € | **80 €** | 6,9 % |
 | Optimisé | TotalEnergies -8 % | 1 064 € | **94 €** | 8,1 % |
 | Agressif | Mint Énergie -11 % | 1 030 € | **128 €** | 11,1 % |
-| **Optimal** | **Primeo -20 %** | **926 €** | **232 €** | **20 %** |
+| **Optimal** | **Primeo -16 %** | **926 €** | **232 €** | **20 %** |
 
-### 3.2 Économie par profil de consommation
+### 4.2 Économie par profil de consommation
 
 | Profil | Conso/an | Min (-7 %) | Max (-20 %) |
 |---|---:|---:|---:|
@@ -135,19 +165,19 @@ Sources : [Kelwatt — Primeo](https://www.kelwatt.fr/fournisseurs/primeo/prix),
 | Maison chauffage élec | 10 000 kWh | 155 € | 450 € |
 | Grande maison + PAC | 14 000 kWh | 215 € | 620 € |
 
-### 3.3 Validation indépendante des économies
+### 4.3 Validation indépendante des économies
 
 - **UFC-Que Choisir "Énergie moins chère ensemble" 2025** : **132 M€ d'économies cumulées** depuis le lancement, économie individuelle 100–480 €/an. Source : [Que Choisir Ensemble](https://www.quechoisirensemble.fr/achat-groupe-energie/).
 - **CRE achat groupé électricité 2024** : 130 k participants, économie moyenne **160 €/an**. Source : [CRE](https://www.cre.fr/actualites/).
 - **Hello Watt — passage TRV → meilleure offre** : **34–100 €/an** (estimation conservatrice). Source : [Hello Watt — Fournisseur moins cher](https://www.hellowatt.fr/contrat-electricite/fournisseur-electricite-moins-cher).
 
-> **Conclusion** : la promesse de **150–320 €/an** est crédible pour un foyer 6 kVA. La promesse de **300–500 €/an** est défendable pour un foyer 9 kVA / 8 000+ kWh.
+> **Conclusion** : la promesse de **150–320 €/an** est crédible pour un foyer 6 kVA. La promesse de **300–620 €/an** est défendable pour un foyer 9 kVA / 8 000+ kWh.
 
 ---
 
-## 4. Linky & Enedis Data Connect — base technique
+## 5. Linky & Enedis Data Connect — base technique
 
-### 4.1 Pénétration
+### 5.1 Pénétration Linky
 
 | Métrique | Valeur | Source |
 |---|---:|---|
@@ -156,24 +186,37 @@ Sources : [Kelwatt — Primeo](https://www.kelwatt.fr/fournisseurs/primeo/prix),
 | Foyers sans Linky (2025) | 2,1 M | [Libow](https://www.libow.fr/linky-obligatoire-2025/) |
 | Frais résiduels relève sans Linky (depuis août 2025) | **38,88 €/an** | [Fournisseurs-electricite](https://www.fournisseurs-electricite.com/compteur/linky/prix) |
 | Coût activation Linky standard | 28,84 € | [Selectra](https://selectra.info/energie/guides/demarches/enedis/tarifs) |
+| Objectif déploiement | **100 % fin 2026** | [Prix-elec](https://prix-elec.com/compteur/linky/deploiement) |
 
-### 4.2 Enedis Data Connect — fonctionnement
+### 5.2 Enedis Data Connect — fonctionnement technique
 
-- **Authentification** : OAuth 2.0, redirection vers compte Enedis du client, **tokens valables 6 mois**.
-- **Granularité** : 30 minutes minimum (pas de temps réel < 30 min).
-- **Coût** : **gratuit** en prod et sandbox.
-- **Données accessibles** : courbe de charge 30 min, consommation quotidienne, puissance souscrite, PDL/PRM (14 chiffres).
+- **Authentification** : OAuth 2.0, redirection vers compte Enedis du client, **tokens valables 6 mois**
+- **Granularité min** : 30 minutes (pas de temps réel < 30 min)
+- **Coût** : **gratuit** en prod et sandbox
+- **Données accessibles** :
+  - Courbe de charge 30 min (puissance moyenne par tranche)
+  - Consommation quotidienne
+  - Puissance souscrite
+  - PDL/PRM (14 chiffres unique du point de livraison)
+  - Production (si autoconsommation/revente solaire)
 - **Limitation critique** : **lecture seule.** L'API ne permet PAS de switcher de fournisseur. Le switch passe par le nouveau fournisseur qui contacte Enedis via les procédures B2B internes.
+- **Consentement collecte horaire fine** : depuis 2024, Enedis peut collecter données horaires sans accord explicite (exception service public), mais transmission à un tiers nécessite accord client.
 
 Sources : [Enedis — Accéder aux données](https://www.enedis.fr/acceder-aux-donnees-fournies-par-enedis), [Enedis — Données personnelles](https://www.enedis.fr/donnees-personnelles), [GitHub consometers/data-connect](https://github.com/consometers/data-connect), [api.gouv.fr — Données ouvertes Enedis](https://api.gouv.fr/les-api/api-donnees-ouvertes-enedis).
 
-### 4.3 Implication produit
+### 5.3 Implication produit
 
-> Pour AutoSwitch : Data Connect = **lecture conso temps réel pour décider**. L'**exécution** du switch passe par browser automation + mandat SEPA + procuration côté nouveau fournisseur (souscription en ligne classique).
+> Pour AutoSwitch : Data Connect = **lecture conso temps réel pour décider et personnaliser**. Permet de :
+> - Calculer la facture annuelle réelle (pas une estimation)
+> - Détecter le profil de consommation (jour/nuit, weekend, saisonnalité)
+> - Recommander HP/HC ou Tempo en fonction du profil réel
+> - Détecter une mauvaise puissance souscrite
+>
+> L'**exécution** du switch passe par browser automation côté nouveau fournisseur (souscription en ligne classique) + mandat SEPA + procuration.
 
 ---
 
-## 5. Volatilité du marché de gros — opportunité re-switch
+## 6. Volatilité du marché de gros — opportunité re-switch
 
 | Indicateur (avril 2026) | Valeur |
 |---|---:|
@@ -186,64 +229,8 @@ Source : [Kelwatt — Prix spot](https://www.kelwatt.fr/prix/electricite-spot-co
 
 **Conséquences** :
 - Offres indexées (~25-35 % du marché) : très avantageuses < 60 €/MWh, désastreuses > 150 €/MWh
-- Fournisseurs lancent de nouvelles offres tous les **2–4 mois**
+- Fournisseurs lancent de nouvelles offres tous les **2-4 mois**
 - **Re-switch semestriel rentable** sur un foyer optimisé → différenciateur AutoSwitch
-
----
-
-## 6. Marché mobile résidentiel français
-
-### 6.1 Macros ARCEP (T2-T4 2025)
-
-| Métrique | Valeur | Source |
-|---|---:|---|
-| Cartes SIM actives | **84,0 M** | [ARCEP T2 2025](https://www.arcep.fr/cartes-et-donnees/nos-publications-chiffrees/observatoire-des-marches-des-communications-electroniques-en-france/t2-2025.html) |
-| ARPU moyen mobile | **14,50 €/mois HT** | [ARCEP T2 2025](https://www.arcep.fr/cartes-et-donnees/nos-publications-chiffrees/observatoire-des-marches-des-communications-electroniques-en-france/t2-2025.html) |
-| Forfaits sans engagement | **89,4 %** | [ARCEP T4 2025](https://www.arcep.fr/cartes-et-donnees/nos-publications-chiffrees/observatoire-des-marches-des-communications-electroniques-en-france/t4-2025.html) |
-| Portabilités RIO Q4 2025 | **1,66 M (–24,9 % YoY)** | [ARCEP T4 2025](https://www.arcep.fr/cartes-et-donnees/nos-publications-chiffrees/observatoire-des-marches-des-communications-electroniques-en-france/t4-2025.html) |
-| Taux de churn trimestriel | ~4 % | [Siècle Digital](https://siecledigital.fr/2026/02/08/les-francais-changent-moins-souvent-doperateur-selon-larcep/) |
-| Taux d'équipement smartphone (12+) | 98 % | [ARCEP T2 2025](https://www.arcep.fr/cartes-et-donnees/nos-publications-chiffrees/observatoire-des-marches-des-communications-electroniques-en-france/t2-2025.html) |
-
-### 6.2 Top 10 forfaits avril 2026 — sans engagement
-
-| Rang | Forfait | Prix/mois | Data | Réseau |
-|---:|---|---:|---:|---|
-| 1 | YouPrice 5G 50 Go | 4,99 € | 50 Go | SFR |
-| 2 | Lebara 5G 60 Go | 5,99 € | 60 Go | SFR |
-| 3 | Prixtel Oxygène | 6,99 € | 120-160 Go | SFR |
-| 4 | YouPrice 5G 200 Go | 7,14 € | 200 Go | SFR |
-| 5 | B&You 80 Go | 8,99 € | 80 Go | Bouygues 5G |
-| 6 | Free Mobile 110 Go | 8,99 € | 110 Go | Free 5G |
-| 7 | Red by SFR 130 Go | 9,99 € | 130 Go | SFR 5G |
-| 8 | La Poste Mobile 120 Go | 9,99 € | 120 Go | SFR |
-| 9 | Sosh 130 Go | 11,99 € | 130 Go | Orange |
-| 10 | Free 5G+ 350 Go | 19,99 € | 350 Go | Free 5G |
-
-Sources : [Selectra mobile](https://selectra.info/telecom/comparatif-mobile), [Échos du Net](https://www.echosdunet.net/comparateur-forfait-mobile/meilleur-forfait).
-
-### 6.3 Économie réalisable mobile
-
-- Forfaits Orange/SFR sous engagement : **25–35 €/mois**
-- MVNO low-cost équivalents : **5–10 €/mois**
-- **Écart capturable : 15–25 €/mois = 200–300 €/an par ligne**
-- Foyer 4 lignes : jusqu'à **1 200 €/an**
-
-Source : [Le Blog Finance — Forfaits surdimensionnés](https://leblogfinance.com/2026/04/factures-de-telephone-ces-forfaits-surdimensionnes-qui-gaspillent-600euro-par-an.html).
-
-### 6.4 Code RIO & portabilité
-
-| Critère | Valeur |
-|---|---|
-| Numéro RIO | 3179 (gratuit) |
-| Format | 12 chiffres/lettres |
-| Délai d'activation | **3 jours ouvrables** |
-| Interruption service max | 4 h |
-| Délai post-résiliation | 40 jours |
-| Coût | **Gratuit (obligation légale)** |
-
-Sources : [Service-Public.fr](https://www.service-public.gouv.fr/particuliers/vosdroits/F22479), [ARCEP T4 2025](https://www.arcep.fr/cartes-et-donnees/nos-publications-chiffrees/observatoire-des-marches-des-communications-electroniques-en-france/t4-2025.html).
-
-> **Implication** : le code RIO est récupérable en envoyant un SMS au 3179 → automatisable via Twilio. Aucune procuration nécessaire pour la portabilité.
 
 ---
 
@@ -262,7 +249,7 @@ Sources : [Service-Public.fr](https://www.service-public.gouv.fr/particuliers/vo
 
 ### 7.2 Cible adressable consolidée
 
-> **41 % × 30 M foyers = ~12 M de foyers en SAM réaliste.**
+> **41 % × 35 M sites = ~14,3 M de foyers en SAM réaliste.**
 
 ---
 
@@ -421,7 +408,7 @@ Pour AutoSwitch :
 ### 12.2 Pricing utilisateur
 
 - **Free tier** : 1 switch/an, validation manuelle, mode commission pure
-- **Premium 5 €/mois** : mode 100 % auto, dashboard avancé, multi-contrats illimités, alertes prio
+- **Premium 5 €/mois** : mode 100 % auto, optimisation tarifaire (HP/HC, Tempo), dashboard avancé, alertes prio, multi-PDL (résidence secondaire)
 
 ### 12.3 Scaling 5 ans (scénario base)
 
@@ -430,8 +417,8 @@ Pour AutoSwitch :
 | Bêta (fin 2026) | 1 000 | 96 k€ |
 | 2 (2027) | 50 000 | 4,8 M€ |
 | 3 (2028) | 250 000 | 24 M€ |
-| **5 (1 % du SAM)** | **230 000** | **22 M€ ARR** |
-| 7 (3 % du SAM) | 690 000 | 66 M€ ARR |
+| **5 (2 % du SAM)** | **287 000** | **~28 M€ ARR** |
+| 7 (5 % du SAM) | 717 000 | 69 M€ ARR |
 
 ### 12.4 Unit economics cibles
 
@@ -441,13 +428,17 @@ Pour AutoSwitch :
 
 ---
 
-## 13. TAM / SAM / SOM consolidé
+## 13. TAM / SAM / SOM consolidé (électricité résidentielle uniquement)
 
 | | Définition | Volume | Valeur (commissions) |
 |---|---|---:|---:|
-| **TAM** | Foyers FR énergie + mobile | 30 M | **~3 Md€/an** |
-| **SAM** | Foyers prêts à déléguer (41 %) | 12 M | **~1,15 Md€/an** |
-| **SOM 5 ans** | Capture 2 % du SAM | 230 K | **22 M€ ARR** |
+| **TAM** | Sites résidentiels FR électricité | 35 M | **~3,4 Md€/an** |
+| **SAM** | Foyers prêts à déléguer (41 %) | **14,3 M** | **~1,4 Md€/an** |
+| **SOM 5 ans** | Capture 2 % du SAM | 287 K | **~28 M€ ARR** |
+
+**Hypothèses TAM/SAM** : commission moyenne 80 €/switch + fréquence 1,2/an.
+
+**Extension naturelle (hors périmètre MVP)** : gaz résidentiel (10 M sites), B2G précarité énergétique → x2 le TAM à terme.
 
 ---
 
@@ -461,8 +452,8 @@ Pour AutoSwitch :
 | **Échec d'un switch** (litige Médiateur) | Moyenne | SLA + assurance RC pro |
 | **Indexée mal calibrée** (re-switch dégrade) | Forte | Contrainte : switch interdit vers offre indexée si volatilité spot > seuil |
 | **Fournisseur ferme son scraping** | Forte | Fallback Vapi (commande vocale) + partenariats API directs |
-| **Saturation marché mobile** (écarts en baisse) | Moyenne | Bundle multi-secteurs (assurance, banque) |
 | **Acquisition coûteuse** (cold démarchage interdit) | Forte | SEO + product-led growth + partenariats banques/néobanques |
+| **Faillite fournisseur partenaire** | Moyenne | Diversification 5+ partenaires, monitoring santé financière |
 
 ---
 
@@ -471,12 +462,12 @@ Pour AutoSwitch :
 1. **« 47 offres sur 80 sont moins chères que le TRV. »** → [CRE](https://www.cre.fr/fileadmin/Documents/Rapports_et_etudes/2025/Observatoire_T4_2024.pdf)
 2. **« 556 000 Français ont quitté EDF en 2025. »** → [CRE Q4 2025](https://www.cre.fr/fileadmin/Documents/Rapports_et_etudes/2026/Observatoire_T4_2025.pdf)
 3. **« Le prix spot a varié de × 6,4 en 7 jours en avril 2026. »** → [Kelwatt](https://www.kelwatt.fr/prix/electricite-spot-cours-marche-gros)
-4. **« 41 % des Français prêts à déléguer = 12 M de foyers cibles. »** → IFOP 2024
-5. **« 89,4 % du marché mobile est sans engagement, 84 M de SIM en France. »** → [ARCEP T4 2025](https://www.arcep.fr/cartes-et-donnees/nos-publications-chiffrees/observatoire-des-marches-des-communications-electroniques-en-france/t4-2025.html)
+4. **« 41 % des Français prêts à déléguer = 14,3 M de foyers cibles. »** → IFOP 2024
+5. **« Linky = 97 % de pénétration, 37,6 M de compteurs, API gratuite. La donnée est dispo, personne ne l'utilise pour switcher. »** → [Libow](https://www.libow.fr/linky-obligatoire-2025/)
 6. **« Selectra prend 60 € pour un service rendu une fois. Nous, 1,2 fois par an. »** → modèle Selectra
 7. **« Octopus Energy = 9 Md$ de valuation, 24 % du marché UK, 1 nouveau client toutes les 30 secondes. »** → [Octopus FY24](https://octopus.energy/press/octopus-energy-group-results-for-fy24-delivered-0-7-profit-margin-tripled-non-uk-customer-base-and-increased-net-assets-to-1-7bn/)
-8. **« Linky = 97 % de pénétration, 37,6 M de compteurs, API gratuite. La donnée est dispo, personne ne l'utilise pour switcher. »** → [Libow](https://www.libow.fr/linky-obligatoire-2025/)
-9. **« Bilt aux US a levé 250 M$ à 10,75 Md$ de valo en juillet 2025 sur le bill management. Le marché est sur cette thèse. »** → [Bilt](https://newsroom.biltrewards.com/bilt-raises-250-million-at-over-10-billion-valuation)
+8. **« 30 % des Français ont HP/HC. 50 % devraient l'avoir. On lit la donnée Linky 30 min, on sait qui doit basculer. »** → Hello Watt
+9. **« Bilt a levé 250 M$ à 10,75 Md$ de valo en juillet 2025 sur le bill management. Le marché est sur cette thèse. »** → [Bilt](https://newsroom.biltrewards.com/bilt-raises-250-million-at-over-10-billion-valuation)
 10. **« Démarchage téléphonique interdit, sanction 375 k€. On joue 100 % digital, c'est le seul angle viable. »** → [Service Public](https://www.service-public.gouv.fr/particuliers/actualites/A18384)
 
 ---
@@ -487,11 +478,8 @@ Pour AutoSwitch :
 - [CRE — Observatoire T4 2025](https://www.cre.fr/fileadmin/Documents/Rapports_et_etudes/2026/Observatoire_T4_2025.pdf)
 - [CRE — Observatoire T4 2024](https://www.cre.fr/fileadmin/Documents/Rapports_et_etudes/2025/Observatoire_T4_2024.pdf)
 - [CRE — actualités](https://www.cre.fr/actualites/)
-- [ARCEP — Observatoire T2 2025](https://www.arcep.fr/cartes-et-donnees/nos-publications-chiffrees/observatoire-des-marches-des-communications-electroniques-en-france/t2-2025.html)
-- [ARCEP — Observatoire T4 2025](https://www.arcep.fr/cartes-et-donnees/nos-publications-chiffrees/observatoire-des-marches-des-communications-electroniques-en-france/t4-2025.html)
 - [Médiateur National de l'Énergie — Rapport 2024](https://www.energie-mediateur.fr/rapport-annuel-2024-du-mediateur-national-de-lenergie-malgre-la-baisse-du-nombre-de-saisines-les-pratiques-inacceptables-persistent/)
 - [Service Public — Démarchage téléphonique](https://www.service-public.gouv.fr/particuliers/actualites/A18384)
-- [Service Public — Code RIO](https://www.service-public.gouv.fr/particuliers/vosdroits/F22479)
 - [DGCCRF — Démarchage rénovation énergétique](https://www.economie.gouv.fr/dgccrf/demarchage-telephonique-dans-le-secteur-de-la-renovation-energetique-une-enquete-de-la-)
 - [Légifrance — Du mandat (Code civil)](https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006118139/)
 - [ANSSI — Signature électronique eIDAS](https://cyber.gouv.fr/reglementation/reglementation-identite-confiance-numerique/securite-echanges-voie-electronique/reglement-eidas/obtenir-certificat-signature-electronique/)
@@ -502,19 +490,20 @@ Pour AutoSwitch :
 ### Comparateurs et fournisseurs
 - [EDF — Tarif Bleu Avril 2026](https://particulier.edf.fr/fr/accueil/guide-energie/electricite/prix-electricite-fournisseurs.html)
 - [EDF — TRV Février 2026](https://www.edf.fr/collectivites/decryptages/normes-et-reglementations/trv-fevrier-2026)
+- [EDF — Choisir sa puissance](https://particulier.edf.fr/fr/accueil/electricite/choisir-puissance-compteur.html)
 - [Hello Watt — TRV 2026](https://www.hellowatt.fr/contrat-electricite/prix-trv-electricite)
 - [Hello Watt — Liste fournisseurs](https://www.hellowatt.fr/contrat-electricite/liste-fournisseurs-electricite)
 - [Hello Watt — Fournisseur moins cher](https://www.hellowatt.fr/contrat-electricite/fournisseur-electricite-moins-cher)
+- [Hello Watt — HP/HC](https://www.hellowatt.fr/contrat-electricite/heures-pleines-heures-creuses)
 - [Hello Watt — Linky](https://www.hellowatt.fr/suivi-consommation-energie/compteur-linky/activer-compteur-linky)
 - [Selectra — Parts de marché](https://selectra.info/energie/fournisseurs/parts-de-marche)
 - [Selectra — Fournisseur moins cher](https://selectra.info/energie/electricite/moins-cher)
-- [Selectra — Mobile](https://selectra.info/telecom/comparatif-mobile)
+- [Selectra — Heures creuses pleines](https://selectra.info/energie/guides/conso/heures-creuses-pleines)
+- [Selectra — Tempo](https://selectra.info/energie/guides/conso/tempo)
 - [Kelwatt — Spot électricité](https://www.kelwatt.fr/prix/electricite-spot-cours-marche-gros)
 - [Kelwatt — Primeo](https://www.kelwatt.fr/fournisseurs/primeo/prix)
 - [Kelwatt — TotalEnergies](https://www.kelwatt.fr/fournisseurs/totalenergies/prix)
 - [Kelwatt — Alpiq](https://www.kelwatt.fr/fournisseurs/alpiq/prix)
-- [Échos du Net — Mobile](https://www.echosdunet.net/comparateur-forfait-mobile/meilleur-forfait)
-- [Le Blog Finance — Forfaits surdimensionnés](https://leblogfinance.com/2026/04/factures-de-telephone-ces-forfaits-surdimensionnes-qui-gaspillent-600euro-par-an.html)
 - [Que Choisir Ensemble](https://www.quechoisirensemble.fr/achat-groupe-energie/)
 - [JeChange](https://www.jechange.fr/energie/electricite/news/foyers-quittent-tarif-reglemente-raisons-cre)
 - [Sciences Po — Selectra](https://www.sciencespo.fr/centre-entrepreneuriat/fr/actualites/selectra-la-plus-grande-startup-issue-de-l-incubateur-de-sciences-po/)
@@ -546,7 +535,5 @@ Pour AutoSwitch :
 - [EIB — Energy efficiency 2025](https://www.eib.org/en/press/all/2025-331-more-than-350000-european-companies-to-get-energy-efficiency-support-under-major-eu-financing-initiative)
 
 ### Presse / signaux faibles
-- [Siècle Digital — ARCEP churn](https://siecledigital.fr/2026/02/08/les-francais-changent-moins-souvent-doperateur-selon-larcep/)
-- [Journal du Geek — Bouygues frais résiliation](https://www.journaldugeek.com/2026/03/27/bouygues-telecom-impose-des-frais-de-resiliation-meme-sur-ses-forfaits-sans-engagement-voici-combien-vous-allez-payer/)
 - [Habitat Presto — Démarchage](https://www.habitatpresto.com/pro/conseils/actualites/demarchage-telephonique-interdit)
 - [Expertise Énergie — Liste fournisseurs](https://www.expertise-energie.fr/les-fournisseurs-denergie/)
