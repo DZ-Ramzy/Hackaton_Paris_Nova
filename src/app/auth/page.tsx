@@ -1,63 +1,101 @@
 "use client";
 
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { useAuthProfileStore } from "@/lib/store/auth-profile-store";
+import {
+  getFirebaseAuthErrorMessage,
+  isFirebaseAuthAvailable,
+  signInWithGoogle,
+  splitDisplayName,
+} from "@/lib/auth/firebase-auth";
 import { Button } from "@/components/ui/button";
 import { MascotBubble } from "@/components/onboarding/MascotBubble";
+import { APP_NAME } from "@/lib/constants";
 
 export default function AuthPage() {
   const router = useRouter();
+  const setProfile = useAuthProfileStore((state) => state.setProfile);
+  const [loadingGoogle, setLoadingGoogle] = useState(false);
+
+  const handleGoogleSignup = async () => {
+    if (!isFirebaseAuthAvailable()) {
+      toast.error("Firebase is not configured in this application.");
+      return;
+    }
+
+    setLoadingGoogle(true);
+    try {
+      const result = await signInWithGoogle();
+      const { firstName, lastName } = splitDisplayName(result.user.displayName);
+
+      setProfile({
+        uid: result.user.uid,
+        firstName,
+        lastName,
+        email: result.user.email ?? "",
+        phone: result.user.phoneNumber ?? "",
+      });
+
+      router.push("/signup/phone");
+    } catch (error) {
+      toast.error(getFirebaseAuthErrorMessage(error));
+    } finally {
+      setLoadingGoogle(false);
+    }
+  };
 
   return (
     <main className="min-h-screen w-full bg-white">
-      <div className="mx-auto flex min-h-screen w-full max-w-[430px] flex-col px-6 pb-8">
-        {/* Header */}
+      <div className="app-shell page-gutter page-bottom-safe flex flex-col pb-8">
         <header className="pt-safe pb-2 text-center" style={{ paddingTop: "max(env(safe-area-inset-top), 48px)" }}>
-          <h2 className="text-2xl font-semibold tracking-tight text-[#1e40af]">
-            Nova
+          <h2 className="brand-wordmark text-[1.7rem] text-[#1e40af]">
+            {APP_NAME}
           </h2>
         </header>
 
-        {/* Mascotte + bulle */}
         <div className="mt-8">
-          <MascotBubble gecko="/mascot/Auth_Screen_Preview.svg" message="Salut ! Je suis Nova, prêt à te faire économiser sur ta facture d'électricité ?" />
+          <MascotBubble
+            gecko="/mascot/Auth_Screen_Preview.svg"
+            message="Hi! I'm Nova, ready to help you save on your electricity bill?"
+          />
         </div>
 
-        {/* Titre central */}
         <section className="mt-8 text-center">
           <h1 className="text-3xl font-semibold tracking-tight text-[#0a1628]">
-            Économise sur ton électricité
+            Save on your electricity
           </h1>
         </section>
 
-        {/* Boutons */}
         <section className="mt-10 flex flex-col gap-3">
           <Button
             onClick={() => router.push("/signup/identity")}
             className="h-14 w-full rounded-2xl bg-[#1e40af] text-base font-medium text-white shadow-none hover:bg-[#1e3a8a]"
           >
-            Créer un compte
+            Create an account
           </Button>
 
           <Button
             variant="outline"
-            onClick={() => router.push("/signup/identity?google=1")}
-            className="h-14 w-full rounded-2xl border border-[rgba(10,22,40,0.08)] bg-white text-base font-medium text-[#0a1628] shadow-sm hover:bg-gray-50"
+            onClick={() => void handleGoogleSignup()}
+            disabled={loadingGoogle}
+            className="h-14 w-full rounded-2xl border border-[rgba(10,22,40,0.08)] bg-white text-base font-medium text-[#0a1628] shadow-sm hover:bg-gray-50 disabled:opacity-40"
           >
             <GoogleIcon className="mr-3 h-5 w-5" />
-            Continuer avec Google
+            {loadingGoogle ? "Connecting to Google..." : "Continue with Google"}
           </Button>
         </section>
 
-        {/* Lien bas */}
         <footer className="mt-auto pt-8 pb-2 text-center">
           <p className="text-sm text-[#5a6b80]">
-            Déjà inscrit ?{" "}
+            Already have an account?{" "}
             <button
               type="button"
               onClick={() => router.push("/login")}
               className="font-medium text-[#1e40af] hover:underline"
             >
-              Se connecter
+              Sign in
             </button>
           </p>
         </footer>

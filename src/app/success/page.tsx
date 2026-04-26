@@ -30,11 +30,11 @@ export default function SuccessPage() {
 
   const offerInfo = useMemo(() => {
     if (!comparison || !selectedOfferId) {
-      return { provider: "ton nouveau fournisseur", offerName: "Ton offre" };
+      return { provider: "your new provider", offerName: "Your plan" };
     }
     const ranked = comparison.rankedOffers.find((r) => r.offerId === selectedOfferId);
     if (!ranked) {
-      return { provider: "ton nouveau fournisseur", offerName: "Ton offre" };
+      return { provider: "your new provider", offerName: "Your plan" };
     }
     return { provider: ranked.providerName, offerName: ranked.offerName };
   }, [comparison, selectedOfferId]);
@@ -67,7 +67,7 @@ export default function SuccessPage() {
   const handleShare = async () => {
     const shareData = {
       title: "Nova",
-      text: "Avec Nova j'ai automatisé le switch de mon électricité — j'économise sans rien faire.",
+      text: "With Nova I automated my electricity switch and save money without lifting a finger.",
       url: typeof window !== "undefined" ? window.location.origin : "",
     };
     try {
@@ -80,12 +80,12 @@ export default function SuccessPage() {
         await (navigator as Navigator).clipboard.writeText(shareData.url);
       }
     } catch {
-      /* l'utilisateur a annulé le share */
+      /* user cancelled sharing */
     }
   };
 
   return (
-    <main className="relative mx-auto flex min-h-screen w-full max-w-[430px] flex-col overflow-hidden bg-white px-6 text-[#0a1628]">
+    <main className="app-shell page-gutter relative flex flex-col overflow-hidden bg-white text-[#0a1628]">
       <style jsx>{`
         @keyframes confetti-fall {
           0% { transform: translate3d(0, -50px, 0) rotate(0deg); opacity: 1; }
@@ -145,7 +145,7 @@ export default function SuccessPage() {
         <div className="animate-celebration-bounce relative h-full w-full">
           <Image
             src="/mascot/success.svg"
-            alt="Nova fête le switch"
+            alt="Nova celebrating your switch"
             fill
             priority
             sizes="256px"
@@ -158,14 +158,14 @@ export default function SuccessPage() {
         className="animate-rise-in mt-8 text-center text-4xl font-bold"
         style={{ animationDelay: "200ms" }}
       >
-        C&apos;est fait !
+        It's done!
       </h1>
 
       <p
         className="animate-rise-in mx-auto mt-2 max-w-xs text-center text-base"
         style={{ color: "#5a6b80", animationDelay: "400ms", textWrap: "pretty" as const }}
       >
-        Le switch est lancé. Tu n&apos;as plus rien à faire, je m&apos;occupe de tout.
+        Your switch has started. You don't need to do anything else, I'll handle the rest.
       </p>
 
       <section
@@ -176,43 +176,43 @@ export default function SuccessPage() {
           className="text-xs font-semibold uppercase tracking-wider"
           style={{ color: "#1e40af" }}
         >
-          Tu vas économiser
+          You will save
         </span>
         <span
           className="text-5xl font-bold tabular-nums"
           style={{ color: "#1e40af" }}
         >
-          {Math.round(savings)} €
+          {Math.round(savings)} EUR
         </span>
-        <span className="text-sm">sur les 12 prochains mois</span>
+        <span className="text-sm">over the next 12 months</span>
         <div
           className="mt-3 h-px w-12"
           style={{ backgroundColor: "rgba(30,64,175,0.25)" }}
         />
         <span className="mt-3 text-xs" style={{ color: "#5a6b80" }}>
-          Avec ta nouvelle offre {offerInfo.provider} · {offerInfo.offerName}
+          With your new plan from {offerInfo.provider} · {offerInfo.offerName}
         </span>
       </section>
 
       <section className="animate-rise-in mt-8" style={{ animationDelay: "800ms" }}>
         <h2 className="mb-4 text-center text-base font-semibold">
-          Ce qui va se passer
+          What happens next
         </h2>
         <ol className="flex flex-col">
           <TimelineItem
-            when="Aujourd'hui"
-            title="Mandat signé, switch lancé"
+            when="Today"
+            title="Mandate signed, switch started"
             connector
             current
           />
           <TimelineItem
-            when="Sous 7 jours"
-            title="Confirmation par ton nouveau fournisseur. Tu reçois un SMS dès que c'est officiel."
+            when="Within 7 days"
+            title="Confirmation from your new provider. You'll receive a text message as soon as it's official."
             connector
           />
           <TimelineItem
-            when="Sous 21 jours max"
-            title="Bascule effective. Tu paies déjà moins cher, sans coupure ni intervention."
+            when="Within 21 days max"
+            title="Switch completed. You already pay less, with no outage and no action required."
           />
         </ol>
       </section>
@@ -227,13 +227,12 @@ export default function SuccessPage() {
           strokeWidth={2}
         />
         <p className="text-sm" style={{ textWrap: "pretty" as const }}>
-          Je t&apos;enverrai une notification à chaque étape. Pas besoin de revenir,
-          tu sauras tout.
+          I'll send you a notification at every step. No need to come back, you'll stay informed.
         </p>
       </div>
 
       <div
-        className="animate-rise-in mb-8 mt-8 flex flex-col gap-3 pb-[env(safe-area-inset-bottom)]"
+        className="animate-rise-in page-bottom-safe mb-8 mt-8 flex flex-col gap-3"
         style={{ animationDelay: "1000ms" }}
       >
         <button
@@ -241,7 +240,7 @@ export default function SuccessPage() {
           className="h-14 w-full rounded-2xl text-base font-medium text-white transition-opacity"
           style={{ backgroundColor: "#1e40af" }}
         >
-          Voir mon contrat
+          View my contract
         </button>
         <button
           onClick={handleShare}
@@ -249,7 +248,7 @@ export default function SuccessPage() {
           style={{ borderColor: "rgba(10,22,40,0.12)", color: "#5a6b80" }}
         >
           <Share2 className="h-4 w-4" />
-          Partager Nova à un proche
+          Share Nova with someone
         </button>
       </div>
     </main>

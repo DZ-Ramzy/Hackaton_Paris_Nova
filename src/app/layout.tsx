@@ -11,8 +11,13 @@ const bodyFont = Manrope({
 
 export const metadata: Metadata = {
   title: "Nova",
-  description: "Agent IA pour réduire votre facture d'électricité",
+  description: "AI agent to reduce your electricity bill",
   applicationName: "Nova",
+  icons: {
+    icon: [{ url: "/icon", type: "image/png", sizes: "512x512" }],
+    shortcut: [{ url: "/icon", type: "image/png", sizes: "512x512" }],
+    apple: [{ url: "/apple-icon", type: "image/png", sizes: "180x180" }],
+  },
   appleWebApp: {
     capable: true,
     title: "Nova",
@@ -23,8 +28,6 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
   viewportFit: "cover",
   themeColor: "#ffffff",
 };
@@ -35,7 +38,7 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="fr">
+    <html lang="en">
       <body
         className={`${bodyFont.variable} bg-white font-[var(--font-body)] text-[#0a1628] antialiased`}
       >

@@ -35,37 +35,22 @@ type Offer = {
 
 const TARIFF_LABELS: Record<TariffType, string> = {
   base: "Base",
-  hp_hc: "Heures Pleines / Heures Creuses",
+  hp_hc: "Peak / Off-peak",
   tempo: "Tempo",
 };
 
-const isTempo = (offer: Offer) =>
-  offer.name.toLowerCase().includes("tempo");
+const isTempo = (offer: Offer) => offer.name.toLowerCase().includes("tempo");
 
 function offersFor(providerName: string, tariff: TariffType): Offer[] {
-  const all = (offersData.offers as Offer[]).filter(
-    (o) => o.provider_name === providerName
-  );
+  const all = (offersData.offers as Offer[]).filter((o) => o.provider_name === providerName);
   if (tariff === "tempo") return all.filter(isTempo);
   if (tariff === "hp_hc") {
-    return all.filter(
-      (o) => !isTempo(o) && o.tariff_types_seen.includes(2)
-    );
+    return all.filter((o) => !isTempo(o) && o.tariff_types_seen.includes(2));
   }
-  return all.filter(
-    (o) => !isTempo(o) && o.tariff_types_seen.includes(1)
-  );
+  return all.filter((o) => !isTempo(o) && o.tariff_types_seen.includes(1));
 }
 
-/**
- * Trie : (1) l'offre par défaut en premier, (2) puis tri alphabétique par nom.
- * Default = "Tarif Bleu réglementé" pour EDF/Base, sinon la première trouvée.
- */
-function sortOffers(
-  offers: Offer[],
-  provider: string,
-  tariff: TariffType
-): Offer[] {
+function sortOffers(offers: Offer[], provider: string, tariff: TariffType): Offer[] {
   if (offers.length <= 1) return offers;
 
   let defaultOffer: Offer | undefined;
@@ -73,7 +58,7 @@ function sortOffers(
     defaultOffer = offers.find(
       (o) =>
         o.name.toLowerCase().includes("tarif bleu") &&
-        o.name.toLowerCase().includes("réglementé")
+        o.name.toLowerCase().includes("reglemente"),
     );
   }
   if (!defaultOffer) defaultOffer = offers[0];
@@ -85,20 +70,18 @@ function sortOffers(
   return [defaultOffer, ...rest];
 }
 
-/** Tente d'extraire le 1er prix du kWh trouvé dans la description (ex: "0,2516 €/kWh"). */
 function extractKwhPrice(description: string): string | null {
-  const match = description.match(
-    /(\d+[.,]\d+)\s*(?:€|EUR)?\s*(?:\/|par\s+)\s*kWh/i
-  );
+  const normalized = description.replace(/€/g, "EUR");
+  const match = normalized.match(/(\d+[.,]\d+)\s*(?:EUR)?\s*(?:\/|par\s+)\s*kWh/i);
   if (!match) return null;
-  return `${match[1].replace(".", ",")} €/kWh`;
+  return `${match[1].replace(".", ",")} EUR/kWh`;
 }
 
 function formatSubscribing(price?: string): string | null {
   if (!price) return null;
   const num = parseFloat(price.replace(",", "."));
   if (Number.isNaN(num)) return price;
-  return `${num.toFixed(2).replace(".", ",")} €/an`;
+  return `${num.toFixed(2).replace(".", ",")} EUR/year`;
 }
 
 export default function OfferPage() {
@@ -108,9 +91,7 @@ export default function OfferPage() {
   const setBillData = useJourneyStore((s) => s.setBillData);
 
   const provider = billData?.providerName ?? "EDF";
-  const tariff: TariffType = billData?.tariffOption
-    ? BILL_TO_TARIFF[billData.tariffOption]
-    : "base";
+  const tariff: TariffType = billData?.tariffOption ? BILL_TO_TARIFF[billData.tariffOption] : "base";
 
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [showAll, setShowAll] = useState(false);
@@ -122,10 +103,9 @@ export default function OfferPage() {
 
   const offers = useMemo(
     () => sortOffers(offersFor(provider, tariff), provider, tariff),
-    [provider, tariff]
+    [provider, tariff],
   );
 
-  // Default selection (la 1ère après tri = offre par défaut)
   useEffect(() => {
     if (offers.length === 0) {
       setSelectedId(null);
@@ -133,15 +113,12 @@ export default function OfferPage() {
     }
     if (selectedId && offers.some((o) => o.id === selectedId)) return;
     setSelectedId(offers[0].id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [offers]);
+  }, [offers, selectedId]);
 
-  // Si on change de combinaison provider/tariff, on referme la liste étendue.
   useEffect(() => {
     setShowAll(false);
   }, [provider, tariff]);
 
-  // Si l'offre sélectionnée est au-delà des 3 visibles, on déplie automatiquement.
   useEffect(() => {
     if (!selectedId) return;
     const idx = offers.findIndex((o) => o.id === selectedId);
@@ -169,7 +146,6 @@ export default function OfferPage() {
     <main className="min-h-screen w-full bg-white">
       <ContractProgress step={3} />
 
-      {/* keyframes pour l'animation rise-in (stagger côté style inline) */}
       <style jsx>{`
         @keyframes riseIn {
           from {
@@ -186,21 +162,19 @@ export default function OfferPage() {
         }
       `}</style>
 
-      <div className="mx-auto flex min-h-[calc(100vh-60px)] w-full max-w-[430px] flex-col px-6 pb-8">
+      <div className="app-screen app-fill page-gutter page-bottom-safe flex flex-col pb-8">
         <div className="mt-4">
-          <MascotBubble gecko="/mascot/Contract-flow.svg" message="Voici les offres disponibles selon tes choix. Sélectionne celle qui correspond à ton contrat actuel." />
+          <MascotBubble gecko="/mascot/Contract-flow.svg" message="Here are the offers available for your choices. Select the one that matches your current contract." />
         </div>
 
         <h1 className="mt-6 text-2xl font-semibold tracking-tight text-[#0a1628]">
-          Ton offre actuelle
+          Your current plan
         </h1>
 
-        {/* Récap des choix précédents */}
         <p className="mt-2 text-sm text-[#5a6b80]">
           {provider} · {TARIFF_LABELS[tariff]}
         </p>
 
-        {/* Liste des offres */}
         <div className="mt-4 flex flex-col gap-2">
           {offers.length === 0 ? (
             <div
@@ -211,13 +185,10 @@ export default function OfferPage() {
               }}
             >
               <p className="text-sm text-[#0a1628]">
-                Aucune offre trouvée pour cette combinaison.
+                No offer found for this combination.
               </p>
-              <Link
-                href="/contract/provider"
-                className="text-sm font-medium text-[#1e40af] hover:underline"
-              >
-                Modifier mes choix
+              <Link href="/contract/provider" className="text-sm font-medium text-[#1e40af] hover:underline">
+                Change my selections
               </Link>
             </div>
           ) : (
@@ -225,11 +196,8 @@ export default function OfferPage() {
               const isSelected = offer.id === selectedId;
               const subscribing = formatSubscribing(offer.prices?.subscribing);
               const kwh = extractKwhPrice(offer.description);
-              // Stagger uniquement pour les cards révélées par "Voir toutes".
               const isRevealed = idx >= VISIBLE_LIMIT;
-              const animDelay = isRevealed
-                ? `${(idx - VISIBLE_LIMIT) * 100}ms`
-                : "0ms";
+              const animDelay = isRevealed ? `${(idx - VISIBLE_LIMIT) * 100}ms` : "0ms";
 
               return (
                 <button
@@ -242,30 +210,20 @@ export default function OfferPage() {
                   }`}
                   style={{
                     background: isSelected ? "#dbeafe" : "#ffffff",
-                    border: `1px solid ${
-                      isSelected ? "#1e40af" : "rgba(10,22,40,0.08)"
-                    }`,
+                    border: `1px solid ${isSelected ? "#1e40af" : "rgba(10,22,40,0.08)"}`,
                     boxShadow: "0 1px 2px rgba(10,22,40,0.04)",
                     animationDelay: animDelay,
                   }}
                 >
                   {isSelected && (
-                    <Check
-                      className="absolute right-3 top-3 h-5 w-5 text-[#1e40af]"
-                      strokeWidth={2.25}
-                    />
+                    <Check className="absolute right-3 top-3 h-5 w-5 text-[#1e40af]" strokeWidth={2.25} />
                   )}
-                  <span
-                    className="pr-8 text-base font-semibold text-[#0a1628]"
-                    style={{ textWrap: "pretty" as const }}
-                  >
+                  <span className="pr-8 text-base font-semibold text-[#0a1628]" style={{ textWrap: "pretty" as const }}>
                     {offer.name}
                   </span>
                   <span className="text-xs text-[#5a6b80]">
-                    {subscribing
-                      ? `Abonnement ${subscribing}`
-                      : "Abonnement selon options"}
-                    {kwh ? ` · ${kwh}` : " · kWh selon options"}
+                    {subscribing ? `Subscription ${subscribing}` : "Subscription depends on options"}
+                    {kwh ? ` · ${kwh}` : " · kWh depends on options"}
                   </span>
                 </button>
               );
@@ -273,27 +231,18 @@ export default function OfferPage() {
           )}
         </div>
 
-        {/* Toggle "Voir toutes les N offres" / "Réduire la liste" */}
         {hasMore && (
           <button
             type="button"
             onClick={() => setShowAll((s) => !s)}
             className="mt-3 self-center text-sm font-medium text-[#1e40af] hover:underline"
           >
-            {showAll
-              ? "Réduire la liste"
-              : `Voir toutes les ${offers.length} offres`}
+            {showAll ? "Show fewer" : `See all ${offers.length} offers`}
           </button>
         )}
 
-        <Button
-          type="button"
-          onClick={handleSubmit}
-          disabled={!selectedId}
-          className="mt-8 h-14 w-full rounded-2xl bg-[#1e40af] text-base font-medium text-white shadow-none hover:bg-[#1e3a8a] disabled:opacity-40"
-          style={{ marginTop: "auto" }}
-        >
-          Confirmer mon contrat
+        <Button type="button" onClick={handleSubmit} disabled={!selectedId} className="mt-8 h-14 w-full rounded-2xl bg-[#1e40af] text-base font-medium text-white shadow-none hover:bg-[#1e3a8a] disabled:opacity-40" style={{ marginTop: "auto" }}>
+          Confirm my contract
         </Button>
       </div>
     </main>

@@ -18,11 +18,11 @@ import {
 type Phase = { image: string; message: string };
 
 const PHASES: Phase[] = [
-  { image: "/mascot/scanning.svg", message: "Je récupère ton numéro PRM..." },
-  { image: "/mascot/Analysing.svg", message: "Je me connecte à Enedis et à ton Linky..." },
-  { image: "/mascot/analyzing-2.svg", message: "J'analyse ton profil de consommation..." },
-  { image: "/mascot/Analyzing-3.svg", message: "Je compare les 78 offres du marché..." },
-  { image: "/mascot/result.svg", message: "J'ai trouvé tes meilleures recommandations !" },
+  { image: "/mascot/scanning.svg", message: "Retrieving your PRM number..." },
+  { image: "/mascot/Analysing.svg", message: "Connecting to Enedis and your Linky meter..." },
+  { image: "/mascot/analyzing-2.svg", message: "Analyzing your consumption profile..." },
+  { image: "/mascot/Analyzing-3.svg", message: "Comparing the 78 market offers..." },
+  { image: "/mascot/result.svg", message: "I found your best recommendations!" },
 ];
 
 const PHASE_DURATION_MS = 3000;
@@ -48,7 +48,6 @@ export default function AnalyzingPage() {
   const hasStarted = useRef(false);
   const ready = journeyHydrated && authHydrated;
 
-  // Animation timers
   useEffect(() => {
     if (error) return;
     const progressTimer = setInterval(() => {
@@ -63,12 +62,11 @@ export default function AnalyzingPage() {
     };
   }, [error]);
 
-  // API call + redirect
   useEffect(() => {
     if (!ready || hasStarted.current) return;
 
     if (!pendingPrm) {
-      toast.error("Renseigne ton numéro PRM avant l'analyse.");
+      toast.error("Enter your PRM number before starting the analysis.");
       router.replace("/scan-prm");
       return;
     }
@@ -82,9 +80,6 @@ export default function AnalyzingPage() {
       const input = {
         prm: pendingPrm as string,
         zipcode: /^\d{5}$/.test(zipCode) ? zipCode : ZIPCODE_FALLBACK,
-        // Baseline EDF Tarif Bleu HP/HC — assumption raisonnable pour
-        // un utilisateur qui n'a pas encore renseigné son contrat actuel.
-        // Sans ces ids, le backend ne calcule pas d'économies.
         currentProviderId: 159,
         currentOfferId: 6887,
         currentTariffType: 2 as const,
@@ -105,7 +100,7 @@ export default function AnalyzingPage() {
             ? caught.message
             : caught instanceof Error
             ? caught.message
-            : "Analyse interrompue";
+            : "Analysis interrupted";
         setError(message);
         toast.error(message);
       }
@@ -163,7 +158,7 @@ export default function AnalyzingPage() {
         />
       </div>
 
-      <div className="mx-auto flex w-full max-w-[430px] flex-1 flex-col items-center px-6">
+      <div className="app-screen page-gutter flex flex-1 flex-col items-center">
         <div className="flex-1" />
 
         <div className="animate-mascot-float relative h-60 w-60">
@@ -183,7 +178,7 @@ export default function AnalyzingPage() {
 
         {error ? (
           <div className="mt-8 flex flex-col items-center gap-4 text-center">
-            <p className="text-lg font-medium text-[#dc2626]">Analyse interrompue</p>
+            <p className="text-lg font-medium text-[#dc2626]">Analysis interrupted</p>
             <p className="text-sm text-[#5a6b80]" style={{ textWrap: "pretty" as const }}>
               {error}
             </p>
@@ -192,7 +187,7 @@ export default function AnalyzingPage() {
               onClick={handleRetry}
               className="mt-2 h-12 rounded-2xl bg-[#1e40af] px-6 text-sm font-medium text-white"
             >
-              Réessayer
+              Try again
             </button>
           </div>
         ) : (
@@ -230,7 +225,7 @@ export default function AnalyzingPage() {
 
         <div className="mb-8 flex items-center justify-center gap-2 text-xs text-[#5a6b80]">
           <Lock className="h-3 w-3" strokeWidth={2} />
-          <span>Tes données restent privées et chiffrées</span>
+          <span>Your data stays private and encrypted</span>
         </div>
       </div>
     </main>

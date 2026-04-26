@@ -45,22 +45,21 @@ export default function DashboardPage() {
     ? selectedOffer.annualSavingsEur
     : comparison?.annualSavingsEur ?? null;
 
-  const greeting = firstName ? `Bonjour ${firstName}` : "Bonjour";
+  const greeting = firstName ? `Hello ${firstName}` : "Hello";
   const avatarInitials = initials(`${firstName} ${lastName}`.trim() || "Nova");
 
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-[430px] flex-col bg-white text-[#0a1628]">
-      {/* Header */}
-      <header className="flex items-center justify-between px-6 py-4 pt-safe">
+    <main className="app-shell flex flex-col bg-white text-[#0a1628]">
+      <header className="page-gutter flex items-center justify-between py-4 pt-safe">
         <div>
           <h1 className="text-lg font-semibold">{greeting}</h1>
           <p className="text-xs" style={{ color: "#5a6b80" }}>
-            Bienvenue sur Nova
+            Welcome to Nova
           </p>
         </div>
         <button
           onClick={() => router.push("/account")}
-          aria-label="Mon compte"
+          aria-label="My account"
           className="flex h-10 w-10 items-center justify-center rounded-full text-sm font-semibold transition-transform hover:scale-105"
           style={{ backgroundColor: "#f3f4f6", color: "#0a1628" }}
         >
@@ -68,19 +67,14 @@ export default function DashboardPage() {
         </button>
       </header>
 
-      <div className="flex-1 px-6 pb-12">
-        {/* Mascotte */}
+      <div className="page-gutter page-bottom-safe flex-1 pb-12">
         <div className="mt-4">
           <MascotBubble
             gecko="/mascot/onboarding-1.svg"
-            message={`Salut ${firstName || ""} ! Prêt à économiser sur tes factures ?`.replace(
-              /\s+/g,
-              " ",
-            )}
+            message={`Hi ${firstName || ""}! Ready to save on your bills?`.replace(/\s+/g, " ")}
           />
         </div>
 
-        {/* Carte économies (si dispo) */}
         {savingsTeaser != null && (
           <button
             onClick={() => router.push("/results")}
@@ -92,59 +86,57 @@ export default function DashboardPage() {
             </span>
             <span className="flex-1">
               <span className="block text-base font-semibold">
-                {Math.round(savingsTeaser)} €/an d'économies dispos
+                {Math.round(savingsTeaser)} EUR/year in available savings
               </span>
               <span className="block text-xs" style={{ color: "#5a6b80" }}>
-                3 offres recommandées pour toi
+                3 recommended offers for you
               </span>
             </span>
             <ChevronRight className="h-5 w-5" style={{ color: "#1e40af" }} />
           </button>
         )}
 
-        {/* Actions principales */}
         <section className="mt-8">
-          <h2 className="mb-3 text-base font-semibold">Que veux-tu faire ?</h2>
+          <h2 className="mb-3 text-base font-semibold">What would you like to do?</h2>
           <div className="grid grid-cols-2 gap-3">
             <ActionCard
               icon={<Camera className="h-5 w-5" style={{ color: "#1e40af" }} />}
-              title="Scanner"
-              subtitle="Une facture ou un compteur"
+              title="Scan"
+              subtitle="A bill or a meter"
               onClick={() => router.push("/scan-prm")}
             />
             <ActionCard
               icon={<FileText className="h-5 w-5" style={{ color: "#1e40af" }} />}
-              title="Mes offres"
-              subtitle="Voir mes recommandations"
+              title="My offers"
+              subtitle="View my recommendations"
               onClick={() => router.push("/results")}
             />
           </div>
         </section>
 
-        {/* Mon compte */}
         <section className="mt-6">
-          <h2 className="mb-3 text-base font-semibold">Mon compte</h2>
+          <h2 className="mb-3 text-base font-semibold">My account</h2>
           <div className="flex flex-col gap-2">
             <ListItem
               icon={<Plug className="h-4 w-4" style={{ color: "#1e40af" }} />}
-              title="Mon contrat actuel"
+              title="My current contract"
               subtitle={
                 currentContract?.provider
                   ? `${currentContract.provider}${currentContract.offer ? ` · ${currentContract.offer}` : ""}`
-                  : "Pas encore renseigné"
+                  : "Not filled in yet"
               }
               onClick={() => router.push("/contract/provider")}
             />
             <ListItem
               icon={<User className="h-4 w-4" style={{ color: "#1e40af" }} />}
-              title="Mes informations"
-              subtitle="Nom, adresse, téléphone"
+              title="My information"
+              subtitle="Name, address, phone"
               onClick={() => router.push("/account")}
             />
             <ListItem
               icon={<Settings className="h-4 w-4" style={{ color: "#1e40af" }} />}
-              title="Paramètres"
-              subtitle="Notifications, confidentialité"
+              title="Settings"
+              subtitle="Notifications, privacy"
               onClick={() => router.push("/settings")}
             />
           </div>

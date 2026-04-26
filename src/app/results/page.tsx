@@ -8,7 +8,6 @@ import { ProviderLogo } from "@/components/providers/ProviderLogo";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useJourneyStore } from "@/lib/store/journey-store";
 import { useJourneyHydrated } from "@/lib/store/use-journey-hydrated";
-import type { RankedOffer } from "@/types/energy";
 
 type DisplayOffer = {
   id: string;
@@ -16,35 +15,20 @@ type DisplayOffer = {
   offerName: string;
   annualSavings: number;
   monthlySavings: number;
-  badge: string;
-  features: string[];
+  badge: string | null;
 };
 
 const badgeColor = (badge: string) => {
   switch (badge) {
-    case "Meilleure offre":
+    case "Best offer":
       return "#1e40af";
-    case "100% verte":
-      return "#059669";
-    case "Stabilité":
-      return "#6366f1";
     default:
       return "#1e40af";
   }
 };
 
-function pickBadge(offer: RankedOffer, isTop: boolean): string {
-  if (isTop) return "Meilleure offre";
-  if (offer.isGreen) return "100% verte";
-  if (offer.isFixedPrice) return "Stabilité";
-  return "Recommandée";
-}
-
-function pickFeatures(offer: RankedOffer): string[] {
-  return [
-    offer.isFixedPrice ? "Prix fixe" : "Prix variable",
-    offer.isGreen ? "Énergie verte" : "Mix standard",
-  ];
+function pickBadge(isTop: boolean): string | null {
+  return isTop ? "Best offer" : null;
 }
 
 export default function ResultsPage() {
@@ -63,8 +47,7 @@ export default function ResultsPage() {
       offerName: r.offerName,
       annualSavings: r.annualSavingsEur,
       monthlySavings: r.annualSavingsEur / 12,
-      badge: pickBadge(r, idx === 0),
-      features: pickFeatures(r),
+      badge: pickBadge(idx === 0),
     }));
   }, [comparison]);
 
@@ -91,20 +74,20 @@ export default function ResultsPage() {
   };
 
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-[430px] flex-col bg-white text-[#0a1628]">
-      <header className="sticky top-0 z-10 flex items-center justify-between border-b border-black/5 bg-white px-6 py-4 pt-safe">
+    <main className="app-shell flex flex-col bg-white text-[#0a1628]">
+      <header className="page-gutter sticky top-0 z-10 flex items-center justify-between border-b border-black/5 bg-white py-4 pt-safe">
         <button
           onClick={() => router.push("/dashboard")}
-          aria-label="Retour"
+          aria-label="Back"
           className="-ml-2 flex h-10 w-10 items-center justify-center rounded-full transition-colors hover:bg-black/5"
         >
           <ArrowLeft className="h-5 w-5" />
         </button>
-        <h1 className="text-sm font-medium">Tes meilleures offres</h1>
+        <h1 className="text-sm font-medium">Your best offers</h1>
         <span className="w-10" />
       </header>
 
-      <div className="flex-1 px-6 pb-8">
+      <div className="page-gutter page-bottom-safe flex-1 pb-8">
         <section
           className="animate-rise-in mt-2 flex flex-col items-center gap-2 rounded-3xl p-6 text-center"
           style={{ backgroundColor: "#dbeafe" }}
@@ -113,16 +96,16 @@ export default function ResultsPage() {
             className="text-xs font-semibold uppercase tracking-wider"
             style={{ color: "#1e40af" }}
           >
-            Économie maximale annuelle
+            Maximum annual savings
           </span>
           <span
             className="text-5xl font-bold tabular-nums"
             style={{ color: "#1e40af" }}
           >
-            {Math.round(maxSavings)} €
+            {Math.round(maxSavings)} EUR
           </span>
           <span className="text-sm" style={{ color: "#5a6b80" }}>
-            Soit ~{Math.round(maxMonthly)} € par mois sur ta facture actuelle
+            About ~{Math.round(maxMonthly)} EUR per month on your current bill
           </span>
         </section>
 
@@ -131,7 +114,7 @@ export default function ResultsPage() {
             gecko="/mascot/result.svg"
             message={
               comparison.recommendationTextFr ||
-              "J'ai analysé ton profil et ta consommation. Voici les 3 offres qui te font économiser le plus tout en restant adaptées à tes habitudes."
+              "I analyzed your profile and your consumption. Here are the 3 offers that save you the most while matching your habits."
             }
           />
         </div>
@@ -154,12 +137,16 @@ export default function ResultsPage() {
                 }}
               >
                 <div className="flex items-start justify-between">
-                  <span
-                    className="rounded-full px-2 py-0.5 text-xs font-semibold text-white"
-                    style={{ backgroundColor: badgeColor(offer.badge) }}
-                  >
-                    {offer.badge}
-                  </span>
+                  {offer.badge ? (
+                    <span
+                      className="rounded-full px-2 py-0.5 text-xs font-semibold text-white"
+                      style={{ backgroundColor: badgeColor(offer.badge) }}
+                    >
+                      {offer.badge}
+                    </span>
+                  ) : (
+                    <span />
+                  )}
                   <div className="flex items-center gap-2">
                     {selected && (
                       <span
@@ -188,44 +175,32 @@ export default function ResultsPage() {
                     className="text-2xl font-bold tabular-nums"
                     style={{ color: "#059669" }}
                   >
-                    −{Math.round(offer.annualSavings)} €/an
+                    -{Math.round(offer.annualSavings)} EUR/year
                   </span>
                   <span className="text-xs" style={{ color: "#5a6b80" }}>
-                    soit {Math.round(offer.monthlySavings)} €/mois
+                    or {Math.round(offer.monthlySavings)} EUR/month
                   </span>
-                </div>
-
-                <div className="mt-3 flex flex-wrap gap-1.5">
-                  {offer.features.map((f) => (
-                    <span
-                      key={f}
-                      className="rounded-full px-2 py-1 text-xs"
-                      style={{ backgroundColor: "#f8fafc", color: "#5a6b80" }}
-                    >
-                      {f}
-                    </span>
-                  ))}
                 </div>
               </button>
             );
           })}
         </section>
 
-        <div className="mt-8 flex flex-col gap-3 pb-[env(safe-area-inset-bottom)]">
+        <div className="mt-8 flex flex-col gap-3">
           <button
             onClick={handleContinue}
             disabled={!selectedOfferId}
             className="h-14 w-full rounded-2xl text-base font-medium text-white transition-opacity disabled:opacity-50"
             style={{ backgroundColor: "#1e40af" }}
           >
-            Continuer avec cette offre
+            Continue with this offer
           </button>
           <button
             onClick={() => router.push("/dashboard")}
             className="h-12 w-full rounded-2xl border bg-white text-sm font-medium transition-colors hover:bg-black/5"
             style={{ borderColor: "rgba(10,22,40,0.12)", color: "#5a6b80" }}
           >
-            Plus tard, retour à l&apos;accueil
+            Maybe later, back to home
           </button>
         </div>
       </div>

@@ -36,7 +36,7 @@ export default function MandatePage() {
     };
   }, [comparison, selectedOfferId]);
 
-  const currentProvider = billData?.providerName ?? "ton fournisseur actuel";
+  const currentProvider = billData?.providerName ?? "your current provider";
 
   useEffect(() => {
     if (!hydrated) return;
@@ -45,7 +45,6 @@ export default function MandatePage() {
     }
   }, [hydrated, comparison, selectedOfferId, router]);
 
-  // Setup canvas en haute résolution
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -112,12 +111,11 @@ export default function MandatePage() {
   const canConfirm = isAccepted && hasSigned;
 
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-[430px] flex-col bg-white text-[#0a1628]">
-      {/* Header */}
-      <header className="sticky top-0 z-10 flex items-center justify-between border-b border-black/5 bg-white px-6 py-4 pt-safe">
+    <main className="app-shell flex flex-col bg-white text-[#0a1628]">
+      <header className="page-gutter sticky top-0 z-10 flex items-center justify-between border-b border-black/5 bg-white py-4 pt-safe">
         <button
           onClick={() => router.back()}
-          aria-label="Retour"
+          aria-label="Back"
           className="-ml-2 flex h-10 w-10 items-center justify-center rounded-full transition-colors hover:bg-black/5"
         >
           <ArrowLeft className="h-5 w-5" />
@@ -126,97 +124,73 @@ export default function MandatePage() {
         <span className="w-10" />
       </header>
 
-      <div className="flex-1 px-6 pb-8">
-        {/* Mascotte */}
+      <div className="page-gutter page-bottom-safe flex-1 pb-8">
         <div className="mt-2">
-          <MascotBubble gecko="/mascot/switching.svg" message="Pour que je switche à ta place, j'ai besoin de ton accord. C'est rapide et 100 % gratuit, sans engagement." />
+          <MascotBubble gecko="/mascot/switching.svg" message="To switch on your behalf, I need your approval. It's quick, free, and commitment-free." />
         </div>
 
-        {/* Récap offre */}
-        <section
-          className="mt-6 rounded-3xl p-5"
-          style={{ backgroundColor: "#dbeafe" }}
-        >
-          <p
-            className="text-xs font-semibold uppercase tracking-wider"
-            style={{ color: "#1e40af" }}
-          >
-            Tu vas switcher vers
+        <section className="mt-6 rounded-3xl p-5" style={{ backgroundColor: "#dbeafe" }}>
+          <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#1e40af" }}>
+            You are switching to
           </p>
           <div className="mt-3 flex items-center gap-3">
             {offer?.provider ? <ProviderLogo name={offer.provider} size={48} /> : null}
             <div className="min-w-0">
-              <p
-                className="text-xs font-medium uppercase tracking-wider"
-                style={{ color: "#5a6b80" }}
-              >
-                {offer?.provider ?? "—"}
+              <p className="text-xs font-medium uppercase tracking-wider" style={{ color: "#5a6b80" }}>
+                {offer?.provider ?? "-"}
               </p>
               <p className="text-lg font-semibold leading-tight">
-                {offer?.offerName ?? "Ton offre sélectionnée"}
+                {offer?.offerName ?? "Your selected plan"}
               </p>
             </div>
           </div>
 
-          <div
-            className="my-4 border-t"
-            style={{ borderColor: "rgba(30,64,175,0.2)" }}
-          />
+          <div className="my-4 border-t" style={{ borderColor: "rgba(30,64,175,0.2)" }} />
 
           <div className="grid grid-cols-2 gap-3">
             <div>
               <p className="text-xs" style={{ color: "#5a6b80" }}>
-                Économie/an
+                Savings / year
               </p>
-              <p
-                className="mt-1 text-xl font-bold tabular-nums"
-                style={{ color: "#059669" }}
-              >
-                {offer?.annualSavings ?? 0} €
+              <p className="mt-1 text-xl font-bold tabular-nums" style={{ color: "#059669" }}>
+                {offer?.annualSavings ?? 0} EUR
               </p>
             </div>
             <div>
               <p className="text-xs" style={{ color: "#5a6b80" }}>
-                Économie/mois
+                Savings / month
               </p>
-              <p
-                className="mt-1 text-xl font-bold tabular-nums"
-                style={{ color: "#059669" }}
-              >
-                {Math.round(offer?.monthlySavings ?? 0)} €
+              <p className="mt-1 text-xl font-bold tabular-nums" style={{ color: "#059669" }}>
+                {Math.round(offer?.monthlySavings ?? 0)} EUR
               </p>
             </div>
           </div>
         </section>
 
-        {/* Ce que tu acceptes */}
         <section className="mt-6">
-          <h2 className="mb-3 text-base font-semibold">Ce que tu acceptes</h2>
+          <h2 className="mb-3 text-base font-semibold">What you agree to</h2>
           <ul className="flex flex-col gap-3">
             <AcceptItem>
-              Nova souscrit pour toi à cette offre chez{" "}
-              <strong className="font-semibold">{offer?.provider ?? "ton nouveau fournisseur"}</strong>.
+              Nova subscribes to this offer for you with{" "}
+              <strong className="font-semibold">{offer?.provider ?? "your new provider"}</strong>.
             </AcceptItem>
             <AcceptItem>
-              Nova résilie ton contrat actuel chez{" "}
+              Nova terminates your current contract with{" "}
               <strong className="font-semibold">{currentProvider}</strong>{" "}
-              (gratuit, sans coupure).
+              (free of charge, with no outage).
             </AcceptItem>
             <AcceptItem>
-              Tu peux annuler à tout moment dans l'app, sans frais.
+              You can cancel at any time in the app, with no fees.
             </AcceptItem>
           </ul>
         </section>
 
-        {/* Case à cocher mandat */}
         <section className="mt-6">
           <label
             className="flex cursor-pointer items-start gap-3 rounded-2xl p-4 transition-colors"
             style={{
               backgroundColor: isAccepted ? "#eef4ff" : "#f9fafb",
-              border: isAccepted
-                ? "1px solid #1e40af"
-                : "1px solid rgba(10,22,40,0.06)",
+              border: isAccepted ? "1px solid #1e40af" : "1px solid rgba(10,22,40,0.06)",
             }}
           >
             <input
@@ -227,45 +201,18 @@ export default function MandatePage() {
             />
             <span className="flex-1">
               <span className="block text-sm">
-                J'autorise Nova à signer le mandat SEPA + procuration en mon
-                nom pour effectuer ce changement de fournisseur d'électricité.
-              </span>
-              <span
-                className="mt-1 block text-xs"
-                style={{ color: "#5a6b80" }}
-              >
-                Tu peux consulter le mandat complet{" "}
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    // TODO: ouvrir drawer/modale avec le texte du mandat
-                    // eslint-disable-next-line no-console
-                    console.log("Open mandate drawer");
-                  }}
-                  className="cursor-pointer underline"
-                  style={{ color: "#1e40af" }}
-                >
-                  ici
-                </button>
-                .
+                I authorize Nova to sign the power of attorney in my name to complete this electricity provider change.
               </span>
             </span>
           </label>
         </section>
 
-        {/* Signature */}
         <section className="mt-6">
-          <h2 className="text-base font-semibold">Ta signature</h2>
+          <h2 className="text-base font-semibold">Your signature</h2>
           <p className="mb-3 mt-1 text-xs" style={{ color: "#5a6b80" }}>
-            Trace ta signature avec ton doigt dans le cadre
+            Draw your signature with your finger inside the box
           </p>
-          <div
-            className="relative h-40 w-full overflow-hidden rounded-2xl bg-white"
-            style={{
-              border: "2px dashed #1e40af",
-            }}
-          >
+          <div className="relative h-40 w-full overflow-hidden rounded-2xl bg-white" style={{ border: "2px dashed #1e40af" }}>
             <canvas
               ref={canvasRef}
               className="absolute inset-0 h-full w-full touch-none"
@@ -278,27 +225,18 @@ export default function MandatePage() {
               onTouchEnd={stopDraw}
             />
             {!hasSigned && (
-              <span
-                className="pointer-events-none absolute inset-0 flex items-center justify-center text-sm font-medium"
-                style={{ color: "#9ca3af" }}
-              >
-                Signe ici
+              <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-sm font-medium" style={{ color: "#9ca3af" }}>
+                Sign here
               </span>
             )}
           </div>
           <div className="mt-2 flex justify-end">
-            <button
-              type="button"
-              onClick={clearCanvas}
-              className="text-xs font-medium underline"
-              style={{ color: "#1e40af" }}
-            >
-              Effacer
+            <button type="button" onClick={clearCanvas} className="text-xs font-medium underline" style={{ color: "#1e40af" }}>
+              Clear
             </button>
           </div>
         </section>
 
-        {/* Bouton */}
         <button
           onClick={async () => {
             if (!canConfirm || !comparison || !offer || isSubmitting) return;
@@ -318,12 +256,12 @@ export default function MandatePage() {
               });
               const payload = await response.json();
               if (!response.ok) {
-                throw new Error(payload.error || "Switch impossible");
+                throw new Error(payload.error || "Switch unavailable");
               }
               setSwitchState(payload.switchState);
               router.push("/success");
             } catch (err) {
-              const message = err instanceof Error ? err.message : "Une erreur est survenue";
+              const message = err instanceof Error ? err.message : "An error occurred";
               toast.error(message);
               setIsSubmitting(false);
             }
@@ -332,16 +270,12 @@ export default function MandatePage() {
           className="mt-8 h-14 w-full rounded-2xl text-base font-medium text-white transition-opacity disabled:opacity-50"
           style={{ backgroundColor: "#1e40af" }}
         >
-          {isSubmitting ? "Confirmation en cours…" : "Confirmer le switch"}
+          {isSubmitting ? "Confirming..." : "Confirm switch"}
         </button>
 
-        {/* Disclaimer */}
-        <div
-          className="mb-8 mt-4 flex items-center justify-center gap-2 text-xs"
-          style={{ color: "#5a6b80" }}
-        >
+        <div className="mb-8 mt-4 flex items-center justify-center gap-2 text-xs" style={{ color: "#5a6b80" }}>
           <ShieldCheck className="h-3 w-3" />
-          <span>Mandat sécurisé · Conforme RGPD · Tu peux annuler à tout moment</span>
+          <span>Secure mandate · GDPR compliant · You can cancel anytime</span>
         </div>
       </div>
     </main>
@@ -351,10 +285,7 @@ export default function MandatePage() {
 function AcceptItem({ children }: { children: React.ReactNode }) {
   return (
     <li className="flex items-start gap-2">
-      <CheckCircle2
-        className="mt-0.5 h-5 w-5 shrink-0"
-        style={{ color: "#059669" }}
-      />
+      <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0" style={{ color: "#059669" }} />
       <span className="text-sm">{children}</span>
     </li>
   );

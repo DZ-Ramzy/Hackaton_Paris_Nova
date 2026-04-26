@@ -42,13 +42,13 @@ export default function AddressPage() {
   return (
     <main className="min-h-screen w-full bg-white">
       <SignupProgress step={3} />
-      <div className="mx-auto flex min-h-[calc(100vh-60px)] w-full max-w-[430px] flex-col px-6 pb-8">
+      <div className="app-screen app-fill page-gutter page-bottom-safe flex flex-col pb-8">
         <div className="mt-4">
-          <MascotBubble gecko="/mascot/onboarding-1.svg" message="Dernière étape ! Ton adresse pour trouver les meilleures offres dispos chez toi." />
+          <MascotBubble gecko="/mascot/onboarding-1.svg" message="Last step. Your address helps me find the best offers available where you live." />
         </div>
 
         <h1 className="mt-6 text-2xl font-semibold tracking-tight text-[#0a1628]">
-          Où habites-tu&nbsp;?
+          Where do you live?
         </h1>
 
         <form
@@ -60,49 +60,23 @@ export default function AddressPage() {
         >
           <div className="flex flex-col gap-2">
             <label htmlFor="street" className="text-sm font-medium text-[#0a1628]">
-              Adresse
+              Address
             </label>
-            <Input
-              id="street"
-              type="text"
-              autoComplete="street-address"
-              placeholder="12 rue de la République"
-              value={street}
-              onChange={(e) => setStreet(e.target.value)}
-              className="h-14 rounded-2xl border-[rgba(10,22,40,0.08)] bg-white text-base"
-            />
+            <Input id="street" type="text" autoComplete="street-address" placeholder="12 rue de la Republique" value={street} onChange={(e) => setStreet(e.target.value)} className="h-14 rounded-2xl border-[rgba(10,22,40,0.08)] bg-white text-base" />
           </div>
 
           <div className="flex gap-3">
             <div className="flex w-1/3 flex-col gap-2">
               <label htmlFor="zipCode" className="text-sm font-medium text-[#0a1628]">
-                Code postal
+                ZIP code
               </label>
-              <Input
-                id="zipCode"
-                type="text"
-                inputMode="numeric"
-                autoComplete="postal-code"
-                placeholder="69002"
-                maxLength={5}
-                value={zipCode}
-                onChange={(e) => setZipCode(e.target.value.replace(/\D/g, "").slice(0, 5))}
-                className="h-14 rounded-2xl border-[rgba(10,22,40,0.08)] bg-white text-base"
-              />
+              <Input id="zipCode" type="text" inputMode="numeric" autoComplete="postal-code" placeholder="69002" maxLength={5} value={zipCode} onChange={(e) => setZipCode(e.target.value.replace(/\D/g, "").slice(0, 5))} className="h-14 rounded-2xl border-[rgba(10,22,40,0.08)] bg-white text-base" />
             </div>
             <div className="flex w-2/3 flex-col gap-2">
               <label htmlFor="city" className="text-sm font-medium text-[#0a1628]">
-                Ville
+                City
               </label>
-              <Input
-                id="city"
-                type="text"
-                autoComplete="address-level2"
-                placeholder="Lyon"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-                className="h-14 rounded-2xl border-[rgba(10,22,40,0.08)] bg-white text-base"
-              />
+              <Input id="city" type="text" autoComplete="address-level2" placeholder="Lyon" value={city} onChange={(e) => setCity(e.target.value)} className="h-14 rounded-2xl border-[rgba(10,22,40,0.08)] bg-white text-base" />
             </div>
           </div>
 
@@ -111,7 +85,7 @@ export default function AddressPage() {
             disabled={!isValid}
             className="mt-auto h-14 w-full rounded-2xl bg-[#1e40af] text-base font-medium text-white shadow-none hover:bg-[#1e3a8a] disabled:opacity-40"
           >
-            Terminer l&apos;inscription
+            Finish sign up
           </Button>
         </form>
       </div>

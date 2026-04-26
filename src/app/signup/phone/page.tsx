@@ -45,13 +45,13 @@ export default function PhonePage() {
   return (
     <main className="min-h-screen w-full bg-white">
       <SignupProgress step={2} />
-      <div className="mx-auto flex min-h-[calc(100vh-60px)] w-full max-w-[430px] flex-col px-6 pb-8">
+      <div className="app-screen app-fill page-gutter page-bottom-safe flex flex-col pb-8">
         <div className="mt-4">
-          <MascotBubble gecko="/mascot/onboarding-2.svg" message="Ton numéro pour te confirmer le compte par SMS. Pas de spam, promis." />
+          <MascotBubble gecko="/mascot/onboarding-2.svg" message="Your phone number lets me confirm your account by text. No spam, promised." />
         </div>
 
         <h1 className="mt-6 text-2xl font-semibold tracking-tight text-[#0a1628]">
-          Ton numéro de téléphone
+          Your phone number
         </h1>
 
         <form
@@ -63,7 +63,7 @@ export default function PhonePage() {
         >
           <div className="flex flex-col gap-2">
             <label htmlFor="phone" className="text-sm font-medium text-[#0a1628]">
-              Numéro de téléphone
+              Phone number
             </label>
             <div className="relative">
               <span
@@ -90,7 +90,7 @@ export default function PhonePage() {
             disabled={!isValid}
             className="mt-auto h-14 w-full rounded-2xl bg-[#1e40af] text-base font-medium text-white shadow-none hover:bg-[#1e3a8a] disabled:opacity-40"
           >
-            Continuer
+            Continue
           </Button>
         </form>
       </div>

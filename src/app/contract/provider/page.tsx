@@ -52,36 +52,24 @@ export default function ProviderPage() {
     <main className="min-h-screen w-full bg-white">
       <ContractProgress step={1} />
 
-      <div className="mx-auto flex min-h-[calc(100vh-60px)] w-full max-w-[430px] flex-col px-6 pb-8">
+      <div className="app-screen app-fill page-gutter page-bottom-safe flex flex-col pb-8">
         <div className="mt-4">
-          <MascotBubble gecko="/mascot/Contract-flow.svg" message="Qui est ton fournisseur d'électricité actuel ? Si tu n'as jamais changé, c'est sûrement EDF." />
+          <MascotBubble gecko="/mascot/Contract-flow.svg" message="Who is your current electricity provider? If you've never switched, it's probably EDF." />
         </div>
 
         <h1 className="mt-6 text-2xl font-semibold tracking-tight text-[#0a1628]">
-          Ton fournisseur
+          Your provider
         </h1>
 
-        {/* Barre de recherche */}
         <div className="relative mt-4">
-          <Search
-            className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#5a6b80]"
-            strokeWidth={2}
-          />
-          <Input
-            type="text"
-            inputMode="search"
-            placeholder="Rechercher un fournisseur..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="h-12 rounded-2xl border-[rgba(10,22,40,0.08)] bg-white pl-11 text-base"
-          />
+          <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#5a6b80]" strokeWidth={2} />
+          <Input type="text" inputMode="search" placeholder="Search for a provider..." value={search} onChange={(e) => setSearch(e.target.value)} className="h-12 rounded-2xl border-[rgba(10,22,40,0.08)] bg-white pl-11 text-base" />
         </div>
 
-        {/* Liste des fournisseurs */}
         <ul className="mt-4 flex flex-col gap-2">
           {filtered.length === 0 && (
             <li className="py-6 text-center text-sm text-[#5a6b80]">
-              Aucun fournisseur trouvé.
+              No provider found.
             </li>
           )}
 
@@ -96,28 +84,18 @@ export default function ProviderPage() {
                   style={{
                     minHeight: 64,
                     background: isSelected ? "#dbeafe" : "#ffffff",
-                    border: `1px solid ${
-                      isSelected ? "#1e40af" : "rgba(10,22,40,0.08)"
-                    }`,
+                    border: `1px solid ${isSelected ? "#1e40af" : "rgba(10,22,40,0.08)"}`,
                     boxShadow: "0 1px 2px rgba(10,22,40,0.04)",
                   }}
                 >
                   <ProviderLogo name={provider} size={40} />
-
                   <span className="flex-1 text-base font-medium text-[#0a1628]">
                     {provider}
                   </span>
-
                   {isSelected ? (
-                    <Check
-                      className="h-5 w-5 shrink-0 text-[#1e40af]"
-                      strokeWidth={2.25}
-                    />
+                    <Check className="h-5 w-5 shrink-0 text-[#1e40af]" strokeWidth={2.25} />
                   ) : (
-                    <ChevronRight
-                      className="h-5 w-5 shrink-0 text-[#5a6b80]"
-                      strokeWidth={2}
-                    />
+                    <ChevronRight className="h-5 w-5 shrink-0 text-[#5a6b80]" strokeWidth={2} />
                   )}
                 </button>
               </li>
@@ -125,13 +103,8 @@ export default function ProviderPage() {
           })}
         </ul>
 
-        <Button
-          type="button"
-          onClick={handleSubmit}
-          className="mt-8 h-14 w-full rounded-2xl bg-[#1e40af] text-base font-medium text-white shadow-none hover:bg-[#1e3a8a] disabled:opacity-40"
-          style={{ marginTop: "auto" }}
-        >
-          Continuer
+        <Button type="button" onClick={handleSubmit} className="mt-8 h-14 w-full rounded-2xl bg-[#1e40af] text-base font-medium text-white shadow-none hover:bg-[#1e3a8a] disabled:opacity-40" style={{ marginTop: "auto" }}>
+          Continue
         </Button>
       </div>
     </main>

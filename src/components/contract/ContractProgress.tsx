@@ -7,21 +7,16 @@ type ContractProgressProps = {
   step: 1 | 2 | 3;
 };
 
-/**
- * Barre de progression du flow de saisie du contrat actuel.
- * 3 étapes : provider → tariff → offer.
- * Visuellement identique à SignupProgress mais sur 3 segments propres au flow contrat.
- */
 export function ContractProgress({ step }: ContractProgressProps) {
   const router = useRouter();
 
   return (
     <div className="sticky top-0 z-20 w-full bg-white pt-safe">
-      <div className="mx-auto flex w-full max-w-[430px] items-center gap-3 px-6 py-4">
+      <div className="app-screen page-gutter flex items-center gap-3 py-4">
         <button
           type="button"
           onClick={() => router.back()}
-          aria-label="Retour"
+          aria-label="Back"
           className="-ml-2 flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[#0a1628] transition-colors hover:bg-gray-100"
         >
           <ChevronLeft className="h-5 w-5" strokeWidth={2.25} />
@@ -38,7 +33,7 @@ export function ContractProgress({ step }: ContractProgressProps) {
         </div>
 
         <span className="shrink-0 text-xs font-medium text-[#5a6b80]">
-          étape {step} sur 3
+          step {step} of 3
         </span>
       </div>
     </div>

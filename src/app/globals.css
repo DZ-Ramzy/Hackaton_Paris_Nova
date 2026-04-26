@@ -40,14 +40,18 @@
 
 html {
   scroll-behavior: smooth;
+  width: 100%;
 }
 
 body {
   margin: 0;
+  width: 100%;
   min-height: 100vh;
+  min-height: 100svh;
   min-height: 100dvh;
   background: var(--background);
   color: var(--foreground);
+  overflow-x: hidden;
 }
 
 a {
@@ -57,6 +61,13 @@ a {
 
 button {
   cursor: pointer;
+}
+
+.brand-wordmark {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
 /* === Safe area iPhone (notch + home indicator) === */
@@ -142,8 +153,31 @@ button {
 }
 .app-screen {
   width: 100%;
-  max-width: 430px;
+  max-width: 480px;
   margin-inline: auto;
+}
+.page-gutter {
+  padding-left: max(env(safe-area-inset-left), clamp(16px, 4vw, 24px));
+  padding-right: max(env(safe-area-inset-right), clamp(16px, 4vw, 24px));
+}
+.page-gutter-tight {
+  padding-left: max(env(safe-area-inset-left), clamp(14px, 3.5vw, 20px));
+  padding-right: max(env(safe-area-inset-right), clamp(14px, 3.5vw, 20px));
+}
+.page-bottom-safe {
+  padding-bottom: max(env(safe-area-inset-bottom), 24px);
+}
+.app-shell {
+  width: 100%;
+  max-width: 480px;
+  margin-inline: auto;
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
+}
+.app-fill {
+  min-height: calc(100svh - 60px);
+  min-height: calc(100dvh - 60px);
 }
 .animate-confetti-fall {
   animation: confetti-fall linear forwards;
