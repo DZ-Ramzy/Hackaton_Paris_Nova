@@ -131,10 +131,17 @@ def _anthropic_vision(image_bytes: bytes, content_type: str) -> _RawOcrResult:
 
 
 def _vision_call(client, base64_image: str, content_type: str):
-    """Wrapper isolé pour faciliter le mocking en test."""
+    """Wrapper isolé pour faciliter le mocking en test.
+
+    `temperature=0` est crucial : la température par défaut (1.0) fait
+    halluciner les chiffres ambigus (8/9, 0/O, 1/I) sur les écrans LCD
+    de compteurs Linky. À 0, le modèle se contente de retranscrire ce
+    qu'il voit sans chercher d'alternative.
+    """
     return client.messages.create(
         model=os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-4-5"),
         max_tokens=512,
+        temperature=0,
         messages=[
             {
                 "role": "user",
@@ -150,11 +157,17 @@ def _vision_call(client, base64_image: str, content_type: str):
                     {
                         "type": "text",
                         "text": (
-                            "Extrait tout le texte visible sur cette image. "
-                            "Si tu vois un numéro de 14 chiffres précédé du label "
-                            "« N° PRM » ou « Point de Référence Mesure », "
-                            "retourne-le tel quel. Renvoie uniquement le texte, "
-                            "sans commentaire."
+                            "Tu lis le texte visible sur l'image d'un compteur "
+                            "Linky ou d'une facture d'électricité. Ta priorité "
+                            "absolue : transcrire chaque chiffre EXACTEMENT comme "
+                            "il apparaît, sans deviner ni corriger. Si un chiffre "
+                            "est partiellement lisible, indique-le par un `?`. "
+                            "Cherche le numéro PRM (Point de Référence Mesure) "
+                            "qui est une suite de 14 chiffres, généralement à "
+                            "côté du label « N° PRM » ou « PRM » ou « NUMERO DE "
+                            "PRM ». Retourne tout le texte visible, en gardant "
+                            "le PRM tel quel sur sa propre ligne. Aucun "
+                            "commentaire."
                         ),
                     },
                 ],

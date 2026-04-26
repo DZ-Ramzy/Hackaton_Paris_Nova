@@ -76,10 +76,15 @@ export default function ScanPrmPage() {
       if (!/^\d{14}$/.test(prm)) {
         throw new Error("Le service OCR n'a pas renvoyé un PRM valide.");
       }
-      launchAnalysis(prm);
+      // Pré-remplit le champ pour que l'utilisateur puisse vérifier / corriger
+      // avant de lancer (l'OCR peut se tromper d'un chiffre sur les écrans
+      // LCD à reflets — vérification humaine cheap insurance).
+      setManualValue(prm);
+      toast.success("PRM détecté — vérifie le numéro avant de lancer.");
     } catch (err) {
       const message = err instanceof Error ? err.message : "Échec de la lecture du PRM.";
       toast.error(message);
+    } finally {
       setIsUploading(false);
     }
   };
