@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Camera, ChevronLeft, ChevronRight, ImagePlus, Loader2 } from "lucide-react";
 import { toast } from "sonner";
@@ -31,9 +31,6 @@ export default function ScanPrmPage() {
 
   const [manualValue, setManualValue] = useState("");
   const [isUploading, setIsUploading] = useState(false);
-
-  const inputCameraRef = useRef<HTMLInputElement>(null);
-  const inputUploadRef = useRef<HTMLInputElement>(null);
 
   const display = useMemo(() => formatPrm(manualValue), [manualValue]);
   const count = manualValue.length;
@@ -128,19 +125,40 @@ export default function ScanPrmPage() {
         </h1>
 
         <div className="mt-6 flex flex-col gap-3">
-          <ActionCard
+          <ActionLabel
+            htmlFor="prm-camera"
             icon={<Camera className="h-6 w-6 text-[#1e40af]" strokeWidth={2} />}
             title="Prendre en photo"
             subtitle="Ouvre l'appareil photo de ton téléphone"
             disabled={isUploading}
-            onClick={() => inputCameraRef.current?.click()}
           />
-          <ActionCard
+          <input
+            id="prm-camera"
+            type="file"
+            accept="image/*"
+            capture="environment"
+            className="absolute h-px w-px overflow-hidden opacity-0"
+            style={{ clip: "rect(0 0 0 0)", clipPath: "inset(50%)" }}
+            tabIndex={-1}
+            disabled={isUploading}
+            onChange={handleFileChange}
+          />
+          <ActionLabel
+            htmlFor="prm-upload"
             icon={<ImagePlus className="h-6 w-6 text-[#1e40af]" strokeWidth={2} />}
             title="Importer une photo"
             subtitle="Choisis depuis ta galerie ou tes fichiers"
             disabled={isUploading}
-            onClick={() => inputUploadRef.current?.click()}
+          />
+          <input
+            id="prm-upload"
+            type="file"
+            accept="image/*"
+            className="absolute h-px w-px overflow-hidden opacity-0"
+            style={{ clip: "rect(0 0 0 0)", clipPath: "inset(50%)" }}
+            tabIndex={-1}
+            disabled={isUploading}
+            onChange={handleFileChange}
           />
         </div>
 
@@ -203,45 +221,29 @@ export default function ScanPrmPage() {
           </button>
         </div>
 
-        <input
-          ref={inputCameraRef}
-          type="file"
-          accept="image/*"
-          capture="environment"
-          className="hidden"
-          onChange={handleFileChange}
-        />
-        <input
-          ref={inputUploadRef}
-          type="file"
-          accept="image/*"
-          className="hidden"
-          onChange={handleFileChange}
-        />
       </div>
     </main>
   );
 }
 
-function ActionCard({
+function ActionLabel({
+  htmlFor,
   icon,
   title,
   subtitle,
   disabled,
-  onClick,
 }: {
+  htmlFor: string;
   icon: React.ReactNode;
   title: string;
   subtitle: string;
   disabled?: boolean;
-  onClick: () => void;
 }) {
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      disabled={disabled}
-      className="group flex w-full items-center gap-4 rounded-2xl bg-white p-4 text-left transition-all duration-300 ease-out hover:scale-[1.01] hover:shadow-md disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100 disabled:hover:shadow-none"
+    <label
+      htmlFor={htmlFor}
+      aria-disabled={disabled}
+      className="group flex w-full cursor-pointer items-center gap-4 rounded-2xl bg-white p-4 text-left transition-all duration-300 ease-out hover:scale-[1.01] hover:shadow-md aria-disabled:pointer-events-none aria-disabled:cursor-not-allowed aria-disabled:opacity-50"
       style={{
         border: "1px solid rgba(10, 22, 40, 0.08)",
         boxShadow: "0 1px 2px rgba(10,22,40,0.04)",
@@ -259,6 +261,6 @@ function ActionCard({
         <span className="text-xs text-[#5a6b80]">{subtitle}</span>
       </div>
       <ChevronRight className="h-5 w-5 shrink-0 text-[#5a6b80]" />
-    </button>
+    </label>
   );
 }
