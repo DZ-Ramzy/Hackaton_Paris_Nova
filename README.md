@@ -1,5 +1,6 @@
 # Nova
 
+
 <p align="center">
   <img src="./public/mascot/onboarding-1.svg" alt="Nova mascot" width="220" />
 </p>
